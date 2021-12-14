@@ -25,6 +25,9 @@ class EducationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Education::class,
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ],
         ]);
     }
 }

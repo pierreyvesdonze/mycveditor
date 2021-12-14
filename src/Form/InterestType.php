@@ -21,6 +21,9 @@ class InterestType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Interest::class,
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ],
         ]);
     }
 }
