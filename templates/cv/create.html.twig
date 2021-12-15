@@ -18,6 +18,7 @@
 {{ form_row(form.title) }}
 
 {# EDUCATIONS #}
+<label for="educations">Formation</label>
 <ul class="educations" data-prototype="{{ form_widget(form.education.vars.prototype)|e('html_attr') }}">
 
     {% for key, step in form.education %}
@@ -32,9 +33,10 @@
 </ul>
 
 {# SKILLS #}
-<ul class="skills" data-prototype="{{ form_widget(form.skill.vars.prototype)|e('html_attr') }}">
+<label for="skills">Compétences</label>
+<ul class="skills" data-prototype="{{ form_widget(form.skills.vars.prototype)|e('html_attr') }}">
 
-    {% for key, step in form.skill %}
+    {% for key, step in form.skills %}
     <li class="li-skill">
         {{ form_row(step.title) }}
     </li>
@@ -42,6 +44,7 @@
 </ul>
 
 {# EXPERIENCES #}
+<label for="experiences">Expérience</label>
 <ul class="experiences" data-prototype="{{ form_widget(form.experience.vars.prototype)|e('html_attr') }}">
 
     {% for key, step in form.experience %}
@@ -56,9 +59,10 @@
 </ul>
 
 {# INTERESTS #}
-<ul class="interests" data-prototype="{{ form_widget(form.interest.vars.prototype)|e('html_attr') }}">
+<label for="interests">Centre d'intérêts</label>
+<ul class="interests" data-prototype="{{ form_widget(form.interests.vars.prototype)|e('html_attr') }}">
 
-    {% for key, step in form.interest %}
+    {% for key, step in form.interests %}
     <li class="li-interest">
         {{ form_row(step.text) }}
     </li>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CV;
 use App\Form\CvType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,8 +29,9 @@ class CvController extends AbstractController
      */
     public function create(Request $request): Response
     {
+        $newCv = new CV();
 
-        $form = $this->createForm(CvType::class);
+        $form = $this->createForm(CvType::class, $newCv);
         $form->handleRequest($request);
 
         return $this->render('cv/create.html.twig', [
