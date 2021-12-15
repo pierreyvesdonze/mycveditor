@@ -152,12 +152,40 @@ class CvController extends AbstractController
                     echo "L'image n'a pas été chargée";
                 }
                 $cv->setImage($newFilename);
-
-                $this->em->flush();
-                $this->addFlash('success', 'Le CV a bien été mis à jour !');
             }
 
-            return $this->redirectToRoute('cv-list');
+            //Education
+            $educations = $form->get('education')->getData();
+            foreach ($educations as $education) {
+                $cv->addEducation($education);
+                $education->setCV($cv);
+            }
+
+            //Skills
+            $skills = $form->get('skills')->getData();
+            foreach ($skills as $skill) {
+                $cv->addSkill($skill);
+            }
+
+            //Interests
+            $interests = $form->get('interests')->getData();
+            foreach ($interests as $interest) {
+                $cv->addInterest($interest);
+            }
+
+            //XP
+            $experiences = $form->get('experience')->getData();
+            foreach ($experiences as $experience) {
+                $cv->addExperience($experience);
+            }
+         
+                $this->em->persist($cv);
+                $this->em->flush();
+                $this->addFlash('success', 'Le CV a bien été mis à jour !');
+
+            return $this->redirectToRoute('cv-view', [
+                'id' => $cv->getId()
+            ]);
         }
 
         return $this->render('cv/create.html.twig', [

@@ -13,6 +13,7 @@ MEDIA QUERIES
 
 .left {
   width: 35%;
+  margin-top: 4%;
   height: 30vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,7 +42,13 @@ MEDIA QUERIES
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 65%;
+  border: solid;
+  -webkit-box-shadow: inset 0 0 4px 2px;
+          box-shadow: inset 0 0 4px 2px;
   padding: 5em;
   background: #054870;
   background: -webkit-gradient(linear, left top, right top, from(#054870), color-stop(79%, #487c91));
@@ -80,7 +87,9 @@ MEDIA QUERIES
 }
 
 .image img {
-  width: 58%;
+  width: 134px;
+  height: 134px;
+  border-radius: 50%;
 }
 
 .cv-title {

@@ -9,8 +9,6 @@
     {# NAV #}
     {% include('menu/nav.html.twig') %}
 
- 
-
     {# PATTERN #}
     <div class="pattern-{{ cv.pattern.id }}">
         {#IMAGE#}
@@ -86,9 +84,8 @@
                 {% endfor %}
             </ul>
 
-            <hr class="hr">
-
             <h2>Expérience professionnelle</h2>
+            <hr class="hr">
             <ul>
                 {% for xp in cv.experience %}
                 <li class="li-elt">
