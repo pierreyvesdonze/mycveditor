@@ -45,7 +45,7 @@ class Education
     /**
      * @ORM\ManyToOne(targetEntity=CV::class, inversedBy="education")
      */
-    private $educations;
+    private $cV;
 
     public function getId(): ?int
     {
@@ -112,14 +112,14 @@ class Education
         return $this;
     }
 
-    public function getEducations(): ?CV
+    public function getCV(): ?CV
     {
-        return $this->educations;
+        return $this->cV;
     }
 
-    public function setEducations(?CV $educations): self
+    public function setCV(?CV $cV): self
     {
-        $this->educations = $educations;
+        $this->cV = $cV;
 
         return $this;
     }

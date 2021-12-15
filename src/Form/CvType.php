@@ -5,9 +5,10 @@ namespace App\Form;
 use App\Entity\CV;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class CvType extends AbstractType
 {
@@ -15,8 +16,24 @@ class CvType extends AbstractType
     {
         $builder
             ->add('user')
-            ->add('name')
-            ->add('image')
+            ->add('name');
+        $builder
+            ->add('image', FileType::class, [
+                'label' => 'Ajouter une image',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'image/jpeg',
+                        ],
+                    ]),
+                ],
+                'attr' => [
+                    'class' => 'filename'
+                ]
+            ]);
+        $builder
             ->add('lastName')
             ->add('firstName')
             ->add('birthdate')
@@ -50,18 +67,17 @@ class CvType extends AbstractType
 
         ]);
 
-        $builder->add('skill', CollectionType::class, [
-            'entry_type' => InterestType::class,
+        $builder->add('experience', CollectionType::class, [
+            'entry_type' => ExperienceType::class,
             'entry_options' => ['label' => false],
             'allow_add' => true,
             'by_reference' => false,
             'allow_delete' => true,
             'required' => true
-
         ]);
 
-        $builder->add('skill', CollectionType::class, [
-            'entry_type' => ExperienceType::class,
+        $builder->add('interest', CollectionType::class, [
+            'entry_type' => InterestType::class,
             'entry_options' => ['label' => false],
             'allow_add' => true,
             'by_reference' => false,
@@ -80,12 +96,5 @@ class CvType extends AbstractType
                 ],
             ]
         );
-    }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => CV::class,
-        ]);
     }
 }

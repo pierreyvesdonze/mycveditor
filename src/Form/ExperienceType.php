@@ -18,7 +18,6 @@ class ExperienceType extends AbstractType
             ->add('country')
             ->add('companyName')
             ->add('title')
-            ->add('cV')
         ;
     }
 

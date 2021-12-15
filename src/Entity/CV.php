@@ -86,7 +86,7 @@ class CV
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity=Education::class, mappedBy="educations")
+     * @ORM\OneToMany(targetEntity=Education::class, mappedBy="cV")
      */
     private $education;
 
@@ -282,26 +282,15 @@ class CV
         return $this->education;
     }
 
-    public function addEducation(Education $education): self
+    public function addEducation(Education $education): void
     {
-        if (!$this->education->contains($education)) {
-            $this->education[] = $education;
-            $education->setEducations($this);
-        }
+        $this->education->add($education);
 
-        return $this;
     }
 
-    public function removeEducation(Education $education): self
+    public function removeEducation(Education $education): void
     {
-        if ($this->education->removeElement($education)) {
-            // set the owning side to null (unless already changed)
-            if ($education->getEducations() === $this) {
-                $education->setEducations(null);
-            }
-        }
-
-        return $this;
+        $this->education->removeElement($education);
     }
 
     /**

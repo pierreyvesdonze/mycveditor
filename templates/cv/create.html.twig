@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un CV{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+{{ form_row(form.name) }}
+{{ form_row(form.image) }}
+{{ form_row(form.lastName) }}
+{{ form_row(form.firstName) }}
+{{ form_row(form.birthdate) }}
+{{ form_row(form.email) }}
+{{ form_row(form.PhoneNumber) }}
+{{ form_row(form.adresseStreet) }}
+{{ form_row(form.adresseNumberStreet) }}
+{{ form_row(form.adressePostalCode) }}
+{{ form_row(form.adresseTown) }}
+{{ form_row(form.title) }}
+
+{# EDUCATIONS #}
+<ul class="educations" data-prototype="{{ form_widget(form.education.vars.prototype)|e('html_attr') }}">
+
+    {% for key, step in form.education %}
+    <li class="li-education">
+        {{ form_row(step.startDate) }}
+        {{ form_row(step.endDate) }}
+        {{ form_row(step.schoolName) }}
+        {{ form_row(step.description) }}
+        {{ form_row(step.schoolLink) }}
+    </li>
+    {% endfor %}
+</ul>
+
+{# SKILLS #}
+<ul class="skills" data-prototype="{{ form_widget(form.skill.vars.prototype)|e('html_attr') }}">
+
+    {% for key, step in form.skill %}
+    <li class="li-skill">
+        {{ form_row(step.title) }}
+    </li>
+    {% endfor %}
+</ul>
+
+{# EXPERIENCES #}
+<ul class="experiences" data-prototype="{{ form_widget(form.experience.vars.prototype)|e('html_attr') }}">
+
+    {% for key, step in form.experience %}
+    <li class="li-experience">
+        {{ form_row(step.startDate) }}
+        {{ form_row(step.endDate) }}
+        {{ form_row(step.town) }}
+        {{ form_row(step.companyName) }}
+        {{ form_row(step.title) }}
+    </li>
+    {% endfor %}
+</ul>
+
+{# INTERESTS #}
+<ul class="interests" data-prototype="{{ form_widget(form.interest.vars.prototype)|e('html_attr') }}">
+
+    {% for key, step in form.interest %}
+    <li class="li-interest">
+        {{ form_row(step.text) }}
+    </li>
+    {% endfor %}
+</ul>
+
+
+{{ form_widget(form.save) }}
+
+{{ form_end(form, {render_rest: false}) }}
+{% endblock %}

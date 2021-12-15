@@ -50,19 +50,9 @@ class Experience
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity=ExperienceLine::class, mappedBy="experience")
-     */
-    private $experienceLines;
-
-    /**
      * @ORM\ManyToOne(targetEntity=CV::class, inversedBy="Experience")
      */
     private $cV;
-
-    public function __construct()
-    {
-        $this->experienceLines = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -137,36 +127,6 @@ class Experience
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|ExperienceLine[]
-     */
-    public function getExperienceLines(): Collection
-    {
-        return $this->experienceLines;
-    }
-
-    public function addExperienceLine(ExperienceLine $experienceLine): self
-    {
-        if (!$this->experienceLines->contains($experienceLine)) {
-            $this->experienceLines[] = $experienceLine;
-            $experienceLine->setExperience($this);
-        }
-
-        return $this;
-    }
-
-    public function removeExperienceLine(ExperienceLine $experienceLine): self
-    {
-        if ($this->experienceLines->removeElement($experienceLine)) {
-            // set the owning side to null (unless already changed)
-            if ($experienceLine->getExperience() === $this) {
-                $experienceLine->setExperience(null);
-            }
-        }
 
         return $this;
     }
