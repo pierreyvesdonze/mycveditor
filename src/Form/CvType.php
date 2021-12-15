@@ -47,7 +47,8 @@ class CvType extends AbstractType
                 'label' => "Prénom"
             ])
             ->add('birthdate', DateType::class,  [
-                'label' => "Date d'anniversaire"
+                'label' => "Date d'anniversaire",
+                'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email'

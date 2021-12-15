@@ -2,6 +2,14 @@
     aria-controls="offcanvasExample">
     |||
 </a>
+<a href="{{ path('cv-update', {'id':cv.id}) }}">
+    <i class="fas fa-cog menu-settings fa-2x">
+    </i>
+</a>
+<a href="{{ path('cv-delete', {'id':cv.id}) }}">
+    <i class="fas fa-trash fa-2x trash" onclick="return confirm('Supprimer ce CV ?')">
+    </i>
+</a>
 
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">

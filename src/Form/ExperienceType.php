@@ -15,10 +15,15 @@ class ExperienceType extends AbstractType
     {
         $builder
             ->add('startDate', DateType::class, [
-                'label' => "Date de début"
+                'label' => "Date de début",
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
+
             ])
             ->add('endDate', DateType::class, [
-                'label' => 'Date de fin'
+                'label' => 'Date de fin',
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('town', TextType::class, [
                 'label' => 'Ville'

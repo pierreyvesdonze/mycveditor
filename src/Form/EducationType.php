@@ -21,7 +21,9 @@ class EducationType extends AbstractType
                 DateType::class,
                 [
                     'label' => 'Date de début',
-                    'required' => true
+                    'required' => true,
+                    'widget' => 'single_text',
+                    'attr' => ['class' => 'js-datepicker']
                 ]
             )
             ->add(
@@ -29,7 +31,9 @@ class EducationType extends AbstractType
                 DateType::class,
                 [
                     'label' => 'Date de fin',
-                    'required' => true
+                    'required' => true,
+                    'widget' => 'single_text',
+                    'attr' => ['class' => 'js-datepicker']
                 ]
             )
             ->add(
@@ -43,8 +47,7 @@ class EducationType extends AbstractType
             ->add(
                 'schoolLink',
                 TextType::class
-            )
-            ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

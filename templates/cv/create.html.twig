@@ -3,75 +3,176 @@
 {% block title %}Créer un CV{% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-{{ form_row(form.name) }}
-{{ form_row(form.image) }}
-{{ form_row(form.lastName) }}
-{{ form_row(form.firstName) }}
-{{ form_row(form.birthdate) }}
-{{ form_row(form.email) }}
-{{ form_row(form.PhoneNumber) }}
-{{ form_row(form.adresseStreet) }}
-{{ form_row(form.adresseNumberStreet) }}
-{{ form_row(form.adressePostalCode) }}
-{{ form_row(form.adresseTown) }}
-{{ form_row(form.title) }}
 
-{# EDUCATIONS #}
-<label for="educations">Formation</label>
-<ul class="educations" data-prototype="{{ form_widget(form.education.vars.prototype)|e('html_attr') }}">
+<div class="container flex">
+    {{ form_start(form) }}
+    {{ form_label(form.name) }}
+    <br>
+    {{ form_widget(form.name) }}
+    <br>
+    <br>
+    {{ form_row(form.image) }}
+    <br>
+    {{ form_label(form.lastName) }}
+    <br>
+    {{ form_widget(form.lastName) }}
+    <br>
+    <br>
+    {{ form_label(form.firstName) }}
+    <br>
+    {{ form_widget(form.firstName) }}
+    <br>
+    {{ form_label(form.birthdate) }}
+    <br>
+    {{ form_widget(form.birthdate) }}
+    <br>
+    {{ form_label(form.email) }}
+    <br> 
+    {{ form_widget(form.email) }}
+    <br> 
+    <br> 
+    {{ form_label(form.PhoneNumber) }}
+    <br> 
+    {{ form_widget(form.PhoneNumber) }}
+    <br> 
+    <br> 
+    {{ form_label(form.adresseStreet) }}
+    <br> 
+    {{ form_widget(form.adresseStreet) }}
+    <br> 
+    <br> 
+    {{ form_label(form.adresseNumberStreet) }}
+    <br> 
+    {{ form_widget(form.adresseNumberStreet) }}
+    <br> 
+    <br> 
+    {{ form_label(form.adressePostalCode) }}
+    <br> 
+    {{ form_widget(form.adressePostalCode) }}
+    <br> 
+    <br> 
+    {{ form_label(form.adresseTown) }}
+    <br> 
+    {{ form_widget(form.adresseTown) }}
+    <br> 
+    <br> 
+    {{ form_label(form.title) }}
+    <br> 
+    {{ form_widget(form.title) }}
+    <br> 
+    <br> 
 
-    {% for key, step in form.education %}
-    <li class="li-education">
-        {{ form_row(step.startDate) }}
-        {{ form_row(step.endDate) }}
-        {{ form_row(step.schoolName) }}
-        {{ form_row(step.description) }}
-        {{ form_row(step.schoolLink) }}
-    </li>
-    {% endfor %}
-</ul>
+    {# EDUCATIONS #}
+    <label for="educations">Formation</label>
+    <ul class="educations" data-prototype="{{ form_widget(form.education.vars.prototype)|e('html_attr') }}">
 
-{# SKILLS #}
-<label for="skills">Compétences</label>
-<ul class="skills" data-prototype="{{ form_widget(form.skills.vars.prototype)|e('html_attr') }}">
+        {% for key, step in form.education %}
+        <li class="li-education">
+            {{ form_label(step.startDate) }}
+            <br>
+            {{ form_widget(step.startDate) }}
+            <br>
+            <br>
+            {{ form_label(step.endDate) }}
+            <br>
+            {{ form_widget(step.endDate) }}
+            <br>
+            <br>
+            {{ form_label(step.schoolName) }}
+            <br>
+            {{ form_widget(step.schoolName) }}
+            <br>
+            <br>
+            {{ form_label(step.description) }}
+            <br>
+            {{ form_widget(step.description) }}
+            <br>
+            <br>
+            {{ form_label(step.schoolLink) }}
+            <br>
+            {{ form_widget(step.schoolLink) }}
+            <br>
+        </li>
+        {% endfor %}
+    </ul>
 
-    {% for key, step in form.skills %}
-    <li class="li-skill">
-        {{ form_row(step.title) }}
-    </li>
-    {% endfor %}
-</ul>
+    {# SKILLS #}
+    <label for="skills">Compétences</label>
+    <ul class="skills" data-prototype="{{ form_widget(form.skills.vars.prototype)|e('html_attr') }}">
 
-{# EXPERIENCES #}
-<label for="experiences">Expérience</label>
-<ul class="experiences" data-prototype="{{ form_widget(form.experience.vars.prototype)|e('html_attr') }}">
+        {% for key, step in form.skills %}
+        <li class="li-skill">
+            {{ form_label(step.title) }}
+            <br>
+            {{ form_row(step.title) }}
+        </li>
+        {% endfor %}
+    </ul>
 
-    {% for key, step in form.experience %}
-    <li class="li-experience">
-        {{ form_row(step.startDate) }}
-        {{ form_row(step.endDate) }}
-        {{ form_row(step.town) }}
-        {{ form_row(step.country) }}
-        {{ form_row(step.companyName) }}
-        {{ form_row(step.title) }}
-    </li>
-    {% endfor %}
-</ul>
+    {# EXPERIENCES #}
+    <label for="experiences">Expérience</label>
+    <ul class="experiences" data-prototype="{{ form_widget(form.experience.vars.prototype)|e('html_attr') }}">
 
-{# INTERESTS #}
-<label for="interests">Centre d'intérêts</label>
-<ul class="interests" data-prototype="{{ form_widget(form.interests.vars.prototype)|e('html_attr') }}">
+        {% for key, step in form.experience %}
+        <li class="li-experience">
+            {{ form_label(step.startDate) }}
+            <br>
+            {{ form_widget(step.startDate) }}
+            <br>
+            <br>
+            {{ form_label(step.endDate) }}
+            <br>
+            {{ form_widget(step.endDate) }}
+            <br>
+            <br>
+            {{ form_label(step.town) }}
+            <br>
+            {{ form_widget(step.town) }}
+            <br>
+            <br>
+            {{ form_label(step.country) }}
+            <br>
+            {{ form_widget(step.country) }}
+            <br>
+            <br>
+            {{ form_label(step.companyName) }}
+            <br>
+            {{ form_widget(step.companyName) }}
+            <br>
+            <br>
+            {{ form_label(step.title) }}
+            <br>
+            {{ form_widget(step.title) }}
+            <br> 
+        </li>
+        {% endfor %}
+    </ul>
 
-    {% for key, step in form.interests %}
-    <li class="li-interest">
-        {{ form_row(step.text) }}
-    </li>
-    {% endfor %}
-</ul>
+    {# INTERESTS #}
+    <label for="interests">Centre d'intérêts</label>
+    <ul class="interests" data-prototype="{{ form_widget(form.interests.vars.prototype)|e('html_attr') }}">
 
+        {% for key, step in form.interests %}
+        <li class="li-interest">
+            {{ form_label(step.text) }}
+            <br>
+            {{ form_widget(step.text) }}
+            <br>
+        </li>
+        {% endfor %}
+    </ul>
 
-{{ form_widget(form.save) }}
+    {{ form_widget(form.save) }}
 
-{{ form_end(form) }}
+    {{ form_end(form) }}
+</div>
+<script>
+    $(document).ready(function () {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    });
+</script>
+
 {% endblock %}
