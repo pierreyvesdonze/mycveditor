@@ -1,12 +1,102 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CvController!{% endblock %}
+{% block title %}CV {{ cv.title }} pattern {{ cv.pattern.id }}{% endblock %}
 
 {% block body %}
 
-<div class="container">
+<div class="custom-container">
 
-{{ cv.title}}
+    {# NAV #}
+    {% include('menu/nav.html.twig') %}
+
+    <div class="pattern-{{ cv.pattern.id }}">
+        {#IMAGE#}
+        <div class="image">
+            <img src="{{ asset('uploads/' ~ cv.image) }}">
+        </div>
+
+        <section class="left">
+            {# TITLE #}
+            <h1 class="cv-title">{{ cv.lastname }} <span>{{ cv.firstname }}</span>
+            </h1>
+            <br>
+
+            {# CONTACT #}
+            <div class="contact">
+                <i class="fas fa-phone-volume fa-2x"></i>
+                {{ cv.phoneNumber }}
+                <br>
+                <i class="fas fa-envelope fa-2x"></i>
+                {{ cv.email }}
+                <br>
+                <i class="fas fa-birthday-cake fa-2x"></i>
+                {{ cv.birthdate|date('d/m/y') }}
+                <i class="fas fa-map-marker-alt"></i>
+                {{ cv.adresseNumberStreet }} {{ cv.adresseStreet }}
+                <br>
+                {{ cv.adressePostalCode }} {{ cv.adresseTown }}
+            </div>
+
+            <br>
+            <br>
+
+            {# SKILLS #}
+            <div class="skills">
+                <h2>Compétences</h2>
+                <ul>
+                    {% for skill in cv.skills %}
+                    <li>{{ skill.title|capitalize }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {# OTHER #}
+            <div class="skills">
+                <h2>Autre</h2>
+                <ul>
+                    {% for interest in cv.interests %}
+                    <li>{{ interest.text|capitalize }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </section>
+        <section class="right">
+            <div class="title">
+                <h1>{{ cv.title }}</h1>
+                <br>
+                <h2>Formation</h2>
+            </div>
+
+            <hr class="hr">
+
+            <ul>
+                {% for educ in cv.education %}
+                <li class="li-elt">
+                    <a href="{{ educ.schoolLink }}">{{educ.schoolName }} </a> de {{ educ.startDate|date("d/m/Y",
+                    "Europe/Paris") }} à {{ educ.Enddate|date("d/m/Y", "Europe/Paris") }}
+                </li>
+                <li class="li-elt">
+                    {{ educ.description }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+
+            <hr class="hr">
+
+            <h2>Expérience professionnelle</h2>
+            <ul>
+                {% for xp in cv.experience %}
+                <li class="li-elt">
+                    - {{ xp.title }} - {{ xp.town }} :  de {{ xp.startDate|date("d/m/Y",
+                    "Europe/Paris") }} à {{ xp.Enddate|date("d/m/Y", "Europe/Paris") }}
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+
 
 
 </div>

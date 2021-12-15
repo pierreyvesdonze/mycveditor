@@ -10,7 +10,7 @@
 
     {% for cv in cvs %}
         <div class="card" style="width: 18rem;">
-            <img src="uploads/{{ cv.image }}" class="card-img-top" alt="cv-image">
+            <img src="{{ asset('uploads/' ~ cv.image) }}" class="card-img-top" alt="cv-image">
             <div class="card-body">
                 <h5 class="card-title">{{ cv.name }}</h5>
                 <a href="{{ path('cv-view', {'id':cv.id}) }}" class="btn btn-primary">Voir</a>

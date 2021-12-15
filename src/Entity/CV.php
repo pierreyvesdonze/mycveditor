@@ -91,7 +91,7 @@ class CV
     private $education;
 
     /**
-     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="cV", orphanRemoval=true, cascade={"persist, "remove"})
+     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="cV", orphanRemoval=true, cascade={"remove"})
      */
     private $skills;
 

@@ -1,4 +1,5 @@
 @import "./responsive";
+@import "./pattern-1";
 
 :root {
     --body-bg: radial-gradient(circle, rgba(243,245,199,1) 11%, rgba(227,227,199,1) 83%);
@@ -14,4 +15,22 @@
 body {
     height: 100vh;
     background: var(--body-bg);
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.hr-white {
+  border: 0;
+  height: 1px;
+  width: 400px;
+  background: rgb(255, 254, 254);
+  background-image: linear-gradient(to right, #ccc, rgb(255, 255, 255), #ccc);
+}
+
+.menu-button {
+    position: absolute;
+    top: 1%;
+    left: 1%;
 }
