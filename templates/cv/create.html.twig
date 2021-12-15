@@ -52,6 +52,7 @@
         {{ form_row(step.startDate) }}
         {{ form_row(step.endDate) }}
         {{ form_row(step.town) }}
+        {{ form_row(step.country) }}
         {{ form_row(step.companyName) }}
         {{ form_row(step.title) }}
     </li>
@@ -72,5 +73,5 @@
 
 {{ form_widget(form.save) }}
 
-{{ form_end(form, {render_rest: false}) }}
+{{ form_end(form) }}
 {% endblock %}

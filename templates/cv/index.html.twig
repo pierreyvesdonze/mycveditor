@@ -3,18 +3,22 @@
 {% block title %}Hello CvController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/mycveditor/src/Controller/CvController.php'|file_link(0) }}">src/Controller/CvController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/mycveditor/templates/cv/index.html.twig'|file_link(0) }}">templates/cv/index.html.twig</a></code></li>
-    </ul>
+    <a href="{{ path('cv-create') }}" class="btn btn-primary" type="button">Ajouter un CV</a>
+
+    {% for cv in cvs %}
+        <div class="card" style="width: 18rem;">
+            <img src="uploads/{{ cv.image }}" class="card-img-top" alt="cv-image">
+            <div class="card-body">
+                <h5 class="card-title">{{ cv.name }}</h5>
+                <a href="{{ path('cv-view', {'id':cv.id}) }}" class="btn btn-primary">Voir</a>
+                <a href="{{ path('cv-update', {"id": cv.id}) }}" class="btn btn-primary">Editer</a>
+                <a href="{{ path('cv-delete', {'id':cv.id}) }}" class="btn btn-danger" onclick="return confirm('Supprimer ce CV ?')">Supprimer</a>
+            </div>
+        </div>
+    {% endfor %}
 </div>
+
 {% endblock %}

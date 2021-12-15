@@ -31,6 +31,7 @@ class CvType extends AbstractType
                     new File([
                         'mimeTypes' => [
                             'image/jpeg',
+                            "image/png"
                         ],
                     ]),
                 ],

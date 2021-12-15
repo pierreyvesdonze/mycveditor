@@ -86,24 +86,30 @@ class CV
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity=Education::class, mappedBy="cV")
+     * @ORM\OneToMany(targetEntity=Education::class, mappedBy="cV", cascade={"persist", "remove"})
      */
     private $education;
 
     /**
-     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="cV", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="cV", orphanRemoval=true, cascade={"persist, "remove"})
      */
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="cV")
+     * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="cV", cascade={"persist", "remove"})
      */
     private $Experience;
 
     /**
-     * @ORM\OneToMany(targetEntity=Interest::class, mappedBy="cV", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Interest::class, mappedBy="cV", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $interests;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Pattern::class, inversedBy="cv")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pattern;
 
     public function __construct()
     {
@@ -379,6 +385,18 @@ class CV
                 $experience->setCV(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPattern(): ?Pattern
+    {
+        return $this->pattern;
+    }
+
+    public function setPattern(?Pattern $pattern): self
+    {
+        $this->pattern = $pattern;
 
         return $this;
     }
