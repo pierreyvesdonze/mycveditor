@@ -137,4 +137,16 @@ ul li {
   top: 1%;
   left: 1%;
 }
+
+.menu-settings {
+  position: absolute;
+  top: 1%;
+  left: 6%;
+}
+
+.trash {
+  position: absolute;
+  top: 1%;
+  left: 10%;
+}
 /*# sourceMappingURL=style.css.map */

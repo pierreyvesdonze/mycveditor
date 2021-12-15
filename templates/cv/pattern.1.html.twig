@@ -9,6 +9,16 @@
     {# NAV #}
     {% include('menu/nav.html.twig') %}
 
+    <a href="{{ path('cv-update', {'id':cv.id}) }}">
+        <i class="fas fa-cog menu-settings fa-2x">
+        </i>
+    </a>
+        <a href="{{ path('cv-delete', {'id':cv.id}) }}">
+            <i class="fas fa-trash fa-2x trash" onclick="return confirm('Supprimer ce CV ?')">
+            </i>
+        </a>
+
+    {# PATTERN #}
     <div class="pattern-{{ cv.pattern.id }}">
         {#IMAGE#}
         <div class="image">
@@ -89,7 +99,7 @@
             <ul>
                 {% for xp in cv.experience %}
                 <li class="li-elt">
-                    - {{ xp.title }} - {{ xp.town }} :  de {{ xp.startDate|date("d/m/Y",
+                    - {{ xp.title }} - {{ xp.town }} : de {{ xp.startDate|date("d/m/Y",
                     "Europe/Paris") }} à {{ xp.Enddate|date("d/m/Y", "Europe/Paris") }}
                 </li>
                 {% endfor %}
